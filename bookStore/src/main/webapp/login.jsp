@@ -3,19 +3,28 @@
 <head>
 <link rel="stylesheet" href="css/signup-style.css">
 <title>Login</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<div id='container'>
-  <div class='signup'>
-  <form action="loginAction.jsp" method="post">
-    <input type="email" name="email" placeholder="votre email" required>
-    <input type="password" name="password" placeholder="votre mot de passe" required>
-    <input type="submit" value="login">
-  </form>
-     
-      <h2><a href="signUp.jsp">SignUp</a></h2>
+ <div>
+ <form action="loginAction.jsp" class="form_container" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class='whysignLogin'>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+   <div class="form-links">
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p><a href="signup.jsp">SignUp</a></p>
+   </div>
+</form>
+      
+      
+  </div>
+  <div class='loginMsg'>
   <%
   String msg = request.getParameter("msg");
   if("notexist".equals(msg)){
@@ -34,11 +43,7 @@
  
 
 
-
-    <h2>Online Shopping</h2>
-    <p>The Online Shopping System is the application that allows the users to shop online without going to the shops to buy them.</p>
   </div>
-</div>
 
 </body>
 </html>

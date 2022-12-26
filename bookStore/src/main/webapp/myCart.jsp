@@ -1,7 +1,7 @@
 <%@page import="bookStore.ConnectionHandler" %>
 <%@page import="java.sql.*" %>
 <%@include file="header.jsp" %>
-<%@include file="footer.jsp" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -66,23 +66,12 @@ try {
 	
 %>
 
-          <tr>
-            <th scope="col" style="background-color: yellow;">Total:<%out.println(total); %> <i class="fa fa-inr"></i> </th>
-            <%if(total > 0){ %><th scope="col"><a href="addressPaymentOrder.jsp">Proceed to order</a></th><%} %>
-          </tr>
-        </thead>
-        <thead>
-          <tr>
-          <th scope="col">S.No</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Category</th>
-            <th scope="col"><i class="fa fa-inr"></i> price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Sub Total</th>
-            <th scope="col">Remove <i class='fas fa-trash-alt'></i></th>
-          </tr>
-        </thead>
-        <tbody>
+        
+            <p>Total:<%out.println(total); %> </p>
+            <%if(total > 0){ %><p><a href="addressPaymentForOrder.jsp">Paiement</a></p><%} %>
+        
+         
+         
         <%
         ResultSet rs = st.executeQuery("select * from books inner join cart on books.id=cart.product_id and cart.email='"+email+"' and cart.address is NULL");
         while(rs.next()){
@@ -90,18 +79,19 @@ try {
       
           <tr>
            <%sno++; %>
-           <td><%out.println(sno); %></td>
-            <td><%=rs.getString(2) %></td>
-            <td><%=rs.getString(3) %></td>
-            <td><i class="fa fa-inr"></i><%=rs.getString(4) %> </td>
-            <td><a href=""><i class='fas fa-plus-circle'></i></a><%=rs.getString(8) %>  <a href=""><i class='fas fa-minus-circle'></i></a></td>
-            <td><i class="fa fa-inr"></i><%=rs.getString(10) %> </td>
-            <td><a href="">Remove <i class='fas fa-trash-alt'></i></a></td>
+           <p><%out.println(sno); %></p>
+            <p><%=rs.getString(2) %></p>
+            <p><%=rs.getString(3) %></p>
+            <p><i class="fa fa-inr"></i><%=rs.getString(4) %> </p>
+            <p><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class='fas fa-plus-circle'></i></a><%=rs.getString(8) %>  <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class='fas fa-minus-circle'></i></a></p>
+            <p><i class="fa fa-inr"></i><%=rs.getString(11) %> </p>
+            <p><a href="removeFromCart.jsp?id=<%=rs.getString(1) %>">Remove <i class='fas fa-trash-alt'></i></a></p>
           </tr>
           
         <%
            }
          }catch(Exception e){
+        	 System.out.println(e);
         	 
          }
         %>
@@ -111,6 +101,6 @@ try {
       <br>
       <br>
       <br>
-
+<%@include file="footer.jsp" %>
 </body>
 </html>

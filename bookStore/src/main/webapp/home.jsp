@@ -1,11 +1,11 @@
 <%@page import="bookStore.ConnectionHandler" %>
 <%@page import="java.sql.*" %>
 <%@include file="header.jsp" %>
-<%@include file="footer.jsp" %>
+
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8">
 <title>Home</title>
 <style>
 h3
@@ -16,12 +16,12 @@ h3
 </style>
 </head>
 <body>
-<div style="color: white; text-align: center; font-size: 30px;">Home <i class="fa fa-institution"></i></div>
+<div style="color: white; text-align: center; font-size: 30px;">Manga Store<i class="fa fa-institution"></i></div>
 <%
 String msg = request.getParameter("msg");
 if("added".equals(msg)){
 %>
-	<h3 class="alert">livre ajouté au panier</h3>
+	<h3 class="alert">livre ajoutÃ© au panier</h3>
 <%} %>
 
 <%
@@ -30,32 +30,25 @@ if("exist".equals(msg)){
 	<h3 class="alert">Product already exist in you cart! Quantity  increased!</h3>
 <%} %>
 
-<table>
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col"><i class="fa fa-inr"></i> Price</th>
-            <th scope="col">Add to cart <i class='fas fa-cart-plus'></i></th>
-          </tr>
-        </thead>
-        <tbody>
+<div class="super_container">
 <%
 try {
 	Connection con = ConnectionHandler.getCon();
 	Statement st = con.createStatement();
-	ResultSet rs = st.executeQuery("select * from books where active='yes'");
+	ResultSet rs = st.executeQuery("select * from books ORDER BY name DESC LIMIT 12");
 	while(rs.next()){
 		
-%>			
-     <tr>
-            <td><%=rs.getString(1)%></td>
-            <td><%=rs.getString(2)%></td>
-            <td><%=rs.getString(3)%></td>
-            <td><i class="fa fa-inr"></i> <%=rs.getString(4) %></td>
-            <td><a href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Add to cart <i class='fas fa-cart-plus'></i></a></td>
-          </tr>
+%>	
+    
+      <div class="product_container">
+            <img src="<%=rs.getString(6)%>">
+            <p class="title"><%=rs.getString(2)%></p>
+            <p><%=rs.getString(3)%></p>
+            <p><%=rs.getString(4)%></p>
+            <p><a href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Ajouter au panier <i class='fas fa-cart-plus'></i></a></p>
+         
+     </div>	
+   
 <%
 }
 }catch(Exception e){
@@ -63,14 +56,10 @@ try {
 	
 }
 %>
-        </tbody>
-      </table>
-      <br>
-      <br>
-      <br>
+        
 
-
+</div> 
           
-
+<%@include file="footer.jsp" %>
 </body>
 </html>
