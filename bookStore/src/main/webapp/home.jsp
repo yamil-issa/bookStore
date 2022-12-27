@@ -1,11 +1,14 @@
 <%@page import="bookStore.ConnectionHandler" %>
 <%@page import="java.sql.*" %>
 <%@include file="header.jsp" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+
 <title>Home</title>
 <style>
 h3
@@ -35,7 +38,7 @@ if("exist".equals(msg)){
 try {
 	Connection con = ConnectionHandler.getCon();
 	Statement st = con.createStatement();
-	ResultSet rs = st.executeQuery("select * from books ORDER BY name DESC LIMIT 12");
+	ResultSet rs = st.executeQuery("select * from books LIMIT 12");
 	while(rs.next()){
 		
 %>	
@@ -44,8 +47,8 @@ try {
             <img src="<%=rs.getString(6)%>">
             <p class="title"><%=rs.getString(2)%></p>
             <p><%=rs.getString(3)%></p>
-            <p><%=rs.getString(4)%></p>
-            <p><a href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Ajouter au panier <i class='fas fa-cart-plus'></i></a></p>
+            <p><b><%=rs.getString(4)%></b> <i class="fa-solid fa-euro-sign"></i>  </p>
+            <button type="button" class="btn btn-primary"><a class="addToCart" href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Ajouter au panier <i class='fas fa-cart-plus'></i></a></button>
          
      </div>	
    

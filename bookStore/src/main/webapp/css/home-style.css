@@ -67,16 +67,7 @@ a {
   background-color: #fff;
   padding: 1rem 1.15rem;
   border-bottom: 1px solid #eceef3;
-  /*
-  |-----------------------------------
-  | Start navbar logo or brand etc..
-  |-----------------------------------
-  */
-  /*
-  |-----------------------------------
-  | Start navbar menu
-  |-----------------------------------
-  */
+  
 }
 @media (min-width: 576px) {
   .navbar .container {
@@ -258,6 +249,44 @@ a {
 	text-align: center;
 }
     
+.addToCart {
+	color: #fff;
+}
+
+.btn {
+	position: relative;
+	bottom: 5px;
+	
+}
+.cart-title {
+	margin-left: 1rem;
+	margin-bottom: 3rem;
+}
+.checkout-text {
+	color: #fff;
+	text-decoration:  none;
+}
+.checkout-container {
+	display:flex;
+	gap: 2rem;
+	margin-top: 1rem;
+	margin-left: 70%;
+}
+
+.cart-container {
+	display:flex;
+	gap: 2rem;
+	margin-bottom: 2rem;
+	margin-left: 1rem;
+}
+
+.checkout-quantity {
+	background-color: #1CA1E3;
+	width: 20px;
+    height: 20px;
+	text-align: center;
+	border-radius: 50%;
+}
     
 /*footer*/
 

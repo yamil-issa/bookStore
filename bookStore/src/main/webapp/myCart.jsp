@@ -6,41 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>My Cart</title>
-<style>
-h3
-{
-	color: yellow;
-	text-align: center;
-}
-</style>
 </head>
 <body>
-<div style="color: white; text-align: center; font-size: 30px;">My Cart <i class='fas fa-cart-arrow-down'></i></div>
+<h1 class="cart-title">Mon panier</h1>
+
 <%
 String msg= request.getParameter("msg");
 if ("notPossible".equals(msg)){
 	
 %>
-<h3 class="alert">There is only one Quantity! So click on remove!</h3>
+<p class="alert">Il ne reste qu'un seul produit cliquez sur supprimer</p>
 	
 <%} %>
 
-<%
-if ("inc".equals(msg)){
-%>	
-<h3 class="alert">Quantity  Increased Successfully!</h3>
-<%} %>
 
-<%
-if ("dec".equals(msg)){
-%>
-<h3 class="alert">Quantity  Decreased Successfully!</h3>
-<%} %>
 
 <%
 if ("removed".equals(msg)){
 %>
-<h3 class="alert">Product Successfully Removed!</h3>
+<p class="alert">le produit a été supprimé du panier</p>
 <%} %>
 
 
@@ -51,8 +35,7 @@ if ("removed".equals(msg)){
 
 
 
-<table>
-<thead>
+
 <%
 int total = 0;
 int sno = 0;
@@ -66,27 +49,25 @@ try {
 	
 %>
 
-        
-            <p>Total:<%out.println(total); %> </p>
-            <%if(total > 0){ %><p><a href="addressPaymentForOrder.jsp">Paiement</a></p><%} %>
-        
-         
+       
          
         <%
         ResultSet rs = st.executeQuery("select * from books inner join cart on books.id=cart.product_id and cart.email='"+email+"' and cart.address is NULL");
         while(rs.next()){
         %>
       
-          <tr>
+          
            <%sno++; %>
-           <p><%out.println(sno); %></p>
+          <div class="cart-container">
+            <img src="<%=rs.getString(7) %>">
             <p><%=rs.getString(2) %></p>
-            <p><%=rs.getString(3) %></p>
-            <p><i class="fa fa-inr"></i><%=rs.getString(4) %> </p>
-            <p><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class='fas fa-plus-circle'></i></a><%=rs.getString(8) %>  <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class='fas fa-minus-circle'></i></a></p>
-            <p><i class="fa fa-inr"></i><%=rs.getString(11) %> </p>
-            <p><a href="removeFromCart.jsp?id=<%=rs.getString(1) %>">Remove <i class='fas fa-trash-alt'></i></a></p>
-          </tr>
+            <p>: <%=rs.getString(3) %></p>
+            <p><b><%=rs.getString(4) %></b> <i class="fa-solid fa-euro-sign"></i> </p>
+            <div><a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=dec"><i class="fa-solid fa-circle-minus"></i></a> <%=rs.getString(9) %>  <a href="incDecQuantityAction.jsp?id=<%=rs.getString(1)%>&quantity=inc"><i class="fa-solid fa-circle-plus"></i></a></div>
+            <p><%=rs.getString(12) %> </p>
+            <a href="removeFromCart.jsp?id=<%=rs.getString(1) %>">Supprimer <i class='fas fa-trash-alt'></i></a>
+         </div>
+         
           
         <%
            }
@@ -95,12 +76,11 @@ try {
         	 
          }
         %>
+         <div class="checkout-container">
+                  <p class="total">Total : <b><%out.println(total); %></b> <i class="fa-solid fa-euro-sign"></i> </p>
+         <%if(total > 0){ %><button type="button" class="btn btn-primary"><a class="checkout-text" href="addressPaymentForOrder.jsp">Procéder au paiement</a></button><%} %>
+        </div>
 
-        </tbody>
-      </table>
-      <br>
-      <br>
-      <br>
 <%@include file="footer.jsp" %>
 </body>
 </html>

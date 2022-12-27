@@ -1,13 +1,12 @@
 <footer class="footer">
   <div class="footer__addr">
-    <h1 class="footer__logo">Manga store</h1>
+    <h1 class="footer__logo">Book store</h1>
         
     <h2>Contact</h2>
     
     <address>
       5534 Somewhere In. The World 22193-10212<br>
           
-      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
     </address>
   </div>
   
@@ -80,7 +79,7 @@
   </ul>
   
   <div class="legal">
-    <p>&copy; 2022 MangaStore. All rights reserved.</p>
+    <p>&copy; 2022 BookStore. All rights reserved.</p>
     
   </div>
 </footer>

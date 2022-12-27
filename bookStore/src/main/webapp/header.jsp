@@ -1,12 +1,15 @@
 <%@page errorPage="error.jsp" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@page import="bookStore.ConnectionHandler" %>
 <%@page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <link rel="stylesheet" href="css/home-style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<script src="https://kit.fontawesome.com/5c05bfc3b4.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <!--Header-->
@@ -31,7 +34,7 @@
         <span></span>
       </button>
       <a href="#">
-        <h4>Manga<span>store</span></h4>
+        <h4>Book<span>store</span></h4>
       </a>
     </div>
 
@@ -39,7 +42,7 @@
       <ul class="navbar-nav">
         <li class="active"><a href="home.jsp">Accueil</a></li>
         <li><a href="myCart.jsp">Panier</a></li>
-        <li><a href="logout.jsp">Se déconnecter</a></li>
+        <li><a href="logout.jsp">Se dÃ©connecter</a></li>
         <li><a class="userName" href=""><%=rs.getString(1)%></a></li>
       </ul>
     </div>
