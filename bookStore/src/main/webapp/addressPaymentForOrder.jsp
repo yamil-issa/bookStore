@@ -85,7 +85,7 @@ try {
 
 <div class="left-div">
 <h3>Numero de téléphone</h3>
-<input class="input-style" type="text" name="mobilePhone" value="<%=rs2.getString(3) %>" placeholder="votre numero de téléphone" required>
+<input type="text" class="form-control" type="text" name="mobilePhone" value="<%=rs2.getString(3) %>" placeholder="votre numero de téléphone" required>
 </div>
 <div class="checkoutConfirmButton">
 <p>Total:  <b><% out.println(total); %></b> <i class="fa-solid fa-euro-sign"></i> </p>

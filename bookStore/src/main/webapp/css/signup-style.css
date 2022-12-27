@@ -1,14 +1,17 @@
-.form_container {
-	width: 40%;
+.sign-title {
 	margin-top: 2rem;
-	margin-left: 30%;
+	margin-left: 35%;
+	
 }
 
-.form-links {
+form {
+	width: 30%;
+	margin-top: 4rem;
+	margin-left: 35%
+}
+
+
+.sign-button {
 	display: flex;
 	gap: 2rem;
-}
-
-.loginMsg {
-	
 }
