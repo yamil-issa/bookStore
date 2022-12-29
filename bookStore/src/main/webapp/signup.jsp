@@ -35,14 +35,14 @@
     String msg = request.getParameter("msg");
     if("valid".equals(msg)){
     %>
-	<h1>Compte crée avec succés</h1>
+	<h3>Compte crée avec succés</h3>
 	
     <% } %>
 
     <%
     if("invalid".equals(msg)){
     %>
-	<h1>Une erreur s'est produite</h1>
+	<p class="loginError">Une erreur s'est produite</p>
     <% } %>
 
     

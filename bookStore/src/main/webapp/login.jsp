@@ -30,14 +30,14 @@
   String msg = request.getParameter("msg");
   if("notexist".equals(msg)){
   %>
-	  <h1>Nom d'utilisateur ou mot de passe incorrect</h1>
+	  <p class="loginError">Nom d'utilisateur ou mot de passe incorrect</p>
 	  
   <%}%>
   
   <% 
   if("invalid".equals(msg)){
   %>
-	  <h1>Une erreur s'est produite</h1>
+	  <p class="loginError">Une erreur s'est produite</p>
 	  
   <%}%>
 
