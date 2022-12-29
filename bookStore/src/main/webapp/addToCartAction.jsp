@@ -21,7 +21,7 @@ try {
 	while(rs1.next()){
 		cart_total = rs1.getInt(5);
 		cart_total += product_total;
-		quantity = rs1.getInt(3);
+		quantity = rs1.getInt(2);
 		quantity ++;
 		a = 1;
 	}
@@ -30,10 +30,10 @@ try {
 		response.sendRedirect("home.jsp?msg=exist");
 	}
 	if (a == 0){ 
-		PreparedStatement ps=con.prepareStatement("insert into cart(email, product_id, quantity, price, total) values(?, ?, ?, ?, ?)");
+		PreparedStatement ps=con.prepareStatement("insert into cart(email, quantity, product_id, price, total) values(?, ?, ?, ?, ?)");
 		ps.setString(1, email);
-		ps.setString(2, product_id);
-		ps.setInt(3, quantity);
+		ps.setInt(2, quantity);
+		ps.setString(3, product_id);
 		ps.setInt(4, product_price);
 		ps.setInt(5, product_total);
 		ps.executeUpdate();

@@ -19,7 +19,7 @@ h3
 </style>
 </head>
 <body>
-<div style="color: white; text-align: center; font-size: 30px;">Manga Store<i class="fa fa-institution"></i></div>
+<div style="color: white; text-align: center; font-size: 30px;">Book Store<i class="fa fa-institution"></i></div>
 <%
 String msg = request.getParameter("msg");
 if("added".equals(msg)){
@@ -30,7 +30,7 @@ if("added".equals(msg)){
 <%
 if("exist".equals(msg)){
 %>
-	<h3 class="alert">Product already exist in you cart! Quantity  increased!</h3>
+	<h3 class="alert">Le produit existe dejà dans votre panier, la quantité a été augmenté </h3>
 <%} %>
 
 <div class="super_container">
@@ -38,7 +38,7 @@ if("exist".equals(msg)){
 try {
 	Connection con = ConnectionHandler.getCon();
 	Statement st = con.createStatement();
-	ResultSet rs = st.executeQuery("select * from books LIMIT 12");
+	ResultSet rs = st.executeQuery("select * from books LIMIT 45");
 	while(rs.next()){
 		
 %>	
@@ -47,6 +47,7 @@ try {
             <img src="<%=rs.getString(6)%>">
             <p class="title"><%=rs.getString(2)%></p>
             <p><%=rs.getString(3)%></p>
+             <p><%=rs.getString(1)%></p>
             <p><b><%=rs.getString(4)%></b> <i class="fa-solid fa-euro-sign"></i>  </p>
             <button type="button" class="btn btn-primary"><a class="addToCart" href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Ajouter au panier <i class='fas fa-cart-plus'></i></a></button>
          

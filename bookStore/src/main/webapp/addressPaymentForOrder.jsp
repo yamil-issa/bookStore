@@ -80,7 +80,7 @@ try {
  <input type="text" class="form-control" type="text" name="CardNumber" placeholder="numero de la carte" required></br>
  <input type="text" class="form-control" type="text" name="CardName" placeholder="nom sur la carte" required></br>
  <input type="text" class="form-control" type="text" name="cvc" placeholder="CVC" required>
-</div>
+</div></br>
 
 
 <div class="left-div">
