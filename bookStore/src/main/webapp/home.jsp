@@ -47,7 +47,6 @@ try {
             <img src="<%=rs.getString(6)%>">
             <p class="title"><%=rs.getString(2)%></p>
             <p><%=rs.getString(3)%></p>
-             <p><%=rs.getString(1)%></p>
             <p><b><%=rs.getString(4)%></b> <i class="fa-solid fa-euro-sign"></i>  </p>
             <button type="button" class="btn btn-primary"><a class="addToCart" href="addToCartAction.jsp?id=<%=rs.getString(1)%>">Ajouter au panier <i class='fas fa-cart-plus'></i></a></button>
          
